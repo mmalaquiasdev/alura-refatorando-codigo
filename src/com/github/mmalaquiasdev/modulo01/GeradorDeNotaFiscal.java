@@ -4,27 +4,10 @@ public class GeradorDeNotaFiscal {
 
 	public NotaFiscal gera(Fatura fatura) {
 		NotaFiscal nf = gerarNotaFiscal(fatura);
-		enviarEmail(nf);
-		salvarNoBanco(nf);
+		new EnviadorDeEmail().enviarEmail(nf);
+		new NFDao().salvarNoBanco(nf);
 
 		return nf;
-	}
-
-	private void salvarNoBanco(NotaFiscal nf) {
-		String sql = "insert into notafiscal (cliente, valor)"+
-					 "values (?," + nf.getValorLiquido() + ")";
-
-		System.out.println("Salvando no banco" + sql);
-	}
-
-	private void enviarEmail(NotaFiscal nf) {
-		String msgDoEmail = "Caro cliente,<br/>";
-		msgDoEmail += "É com prazer que lhe avisamos que sua nota fiscal foi "
-				+ "gerada no valor de " + nf.getValorLiquido() + ".<br/>";
-		msgDoEmail += "Acesse o site da prefeitura e faça o download.<br/><br/>";
-		msgDoEmail += "Obrigado!";
-
-		System.out.println(msgDoEmail);
 	}
 
 	private NotaFiscal gerarNotaFiscal(Fatura fatura) {
