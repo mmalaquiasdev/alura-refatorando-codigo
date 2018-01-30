@@ -1,7 +1,7 @@
 package com.github.mmalaquiasdev.modulo01;
 
 public class NFDao {
-    public void salvarNoBanco(NotaFiscal nf) {
+    public void salvar(NotaFiscal nf) {
         String sql = "insert into notafiscal (cliente, valor)"+
                 "values (?," + nf.getValorLiquido() + ")";
 

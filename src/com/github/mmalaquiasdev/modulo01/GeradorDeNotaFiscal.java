@@ -4,8 +4,8 @@ public class GeradorDeNotaFiscal {
 
 	public NotaFiscal gera(Fatura fatura) {
 		NotaFiscal nf = gerarNotaFiscal(fatura);
-		new EnviadorDeEmail().enviarEmail(nf);
-		new NFDao().salvarNoBanco(nf);
+		new EnviadorDeEmail().enviar(nf);
+		new NFDao().salvar(nf);
 
 		return nf;
 	}
