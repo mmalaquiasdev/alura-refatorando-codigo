@@ -7,15 +7,15 @@ public class Trem {
 	private List<Vagao> vagoes;
 	private int capacidade;
 	
-	public boolean disp(int reservas) {
+	public boolean podeReservar(int qtdLugaresParaReservar) {
 		
-		int r = 0;
-		for(Vagao v : vagoes) {
-			r += v.reservados();
+		int qtdLugaresReservados = 0;
+		for(Vagao vagao : vagoes) {
+			qtdLugaresReservados += vagao.reservados();
 		}
 		
-		r = capacidade - r;
-		return r > reservas; 
+		int qtdLugaresDisponiveis = capacidade - qtdLugaresReservados;
+		return qtdLugaresDisponiveis >= qtdLugaresParaReservar;
 	}
 	
 }
