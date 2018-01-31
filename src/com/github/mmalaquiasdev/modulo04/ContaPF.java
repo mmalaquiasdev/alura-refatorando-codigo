@@ -1,29 +1,16 @@
 package com.github.mmalaquiasdev.modulo04;
 
-public class ContaPF {
-
-	private String titular;
-	private double saldo;
+public class ContaPF extends ContaBancaria{
 
 	public ContaPF(String titular, double saldoInicial) {
-		this.titular = titular;
-		this.saldo = saldoInicial;
+		super(titular, saldoInicial);
 	}
 	
 	public void saca(double valor) {
-		saldo -= valor + 0.1;
+		super.saca(valor + 0.1);
 	}
 	
 	public void deposita(double valor) {
-		saldo += valor - 0.1;
+		super.deposita(valor - 0.1);
 	}
-	
-	public double getSaldo() {
-		return saldo;
-	}
-	
-	public String getTitular() {
-		return titular;
-	}
-	
 }
