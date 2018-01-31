@@ -1,5 +1,7 @@
 package com.github.mmalaquiasdev.modulo06;
 
+import static com.github.mmalaquiasdev.modulo06.Moeda.*;
+
 public class Fatura {
 
 	private double valorMensal;
@@ -24,10 +26,10 @@ public class Fatura {
 		this.cliente = cliente;
 	}
 	public double emReal(){
-		return converteValor(1.0);
+		return converteValor(VALOR_TAXA_EM_REAL.getTaxa());
 	}
 	public double emDolar(){
-		return converteValor(2.7);
+		return converteValor(VALOR_TAXA_EM_DOLAR.getTaxa());
 	}
 	private double converteValor(double taxa) {
 		return valorMensal * taxa;
