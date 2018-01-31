@@ -8,14 +8,16 @@ public class Trem {
 	private int capacidade;
 	
 	public boolean podeReservar(int qtdLugaresParaReservar) {
-		
+		int qtdLugaresDisponiveis = capacidade - getQtdLugaresReservados();
+		return qtdLugaresDisponiveis >= qtdLugaresParaReservar;
+	}
+
+	private int getQtdLugaresReservados() {
 		int qtdLugaresReservados = 0;
 		for(Vagao vagao : vagoes) {
 			qtdLugaresReservados += vagao.reservados();
 		}
-		
-		int qtdLugaresDisponiveis = capacidade - qtdLugaresReservados;
-		return qtdLugaresDisponiveis >= qtdLugaresParaReservar;
+		return qtdLugaresReservados;
 	}
-	
+
 }
