@@ -13,11 +13,10 @@ public class Trem {
 	}
 
 	private int getQtdLugaresReservados() {
-		int qtdLugaresReservados = 0;
-		for(Vagao vagao : vagoes) {
-			qtdLugaresReservados += vagao.reservados();
-		}
-		return qtdLugaresReservados;
+		return vagoes
+				.stream()
+				.mapToInt(Vagao::reservados)
+				.sum();
 	}
 
 }
